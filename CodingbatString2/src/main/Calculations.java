@@ -1,0 +1,74 @@
+package main;
+
+public class Calculations {
+// Given a string, return a string where for every char in the original, 
+// there are two chars.
+// doubleChar("The") → "TThhee"
+	public String doubleChar(String str) {
+		char[] arr = new char[2 * str.length()];
+		int count = 0;
+		for (int i = 0; i < str.length(); i++) {
+			arr[count] = str.charAt(i);
+			count++;
+			arr[count] = str.charAt(i);
+			count++;
+		}
+		return new String(arr);
+	}
+
+// Return the number of times that the string "hi" appears anywhere in the given string.
+	public int countHi(String str) {
+		return (str.length() - str.replaceAll("hi", "").length()) / 2;
+	}
+
+// Return true if the string "cat" and "dog" appear the same number of times in the given string.
+	public boolean catDog(String str) {
+		int a = (str.length() - str.replaceAll("cat", "").length()) / 3;
+		int b = (str.length() - str.replaceAll("dog", "").length()) / 3;
+		if (a - b == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+// Return the number of times that the string "code" appears anywhere in the given string, 
+//	except we'll accept any letter for the 'd', so "cope" and "cooe" count.
+	public int countCode(String str) {
+		return (str.length() - str.replaceAll("co.e", "").length()) / 4;
+	}
+
+// Given two strings, return true if either of the strings appears at the very end of the other string, 
+//	ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). 
+//	Note: str.toLowerCase() returns the lowercase version of a string.
+	public boolean endOther(String a, String b) {
+		int x = a.length();
+		int y = b.length();
+		if (x >= y) {
+			String c = a.substring(x - y);
+			return c.equalsIgnoreCase(b);
+		} else {
+			String d = b.substring(y - x);
+			return d.equalsIgnoreCase(a);
+		}
+	}
+
+// Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). 
+//	So "xxyz" counts but "x.xyz" does not.
+	public boolean xyzThere(String str) {
+		int x = (str.length() - (str.replaceAll(".xyz", "").length())) / 4;
+		int y = (str.length() - (str.replaceAll("xyz", "").length())) / 3;
+		if (x == y) {
+			return false;
+		} else if (y > x) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public StringBuilder reverseString(String str) {
+		return new StringBuilder(str).reverse();
+	}
+
+}

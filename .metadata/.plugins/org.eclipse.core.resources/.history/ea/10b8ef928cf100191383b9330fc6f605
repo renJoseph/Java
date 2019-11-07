@@ -1,0 +1,14 @@
+package main;
+
+public class app {
+	public static int hcf(int a, int b) {
+		int i = Math.min(a, b);
+		while ((a%i != 0) && (b%i != 0)){
+			i--;
+			}
+			return i;
+		}
+	public static void main(String[] args) {
+		System.out.println(hcf(42,56));
+	}
+}
